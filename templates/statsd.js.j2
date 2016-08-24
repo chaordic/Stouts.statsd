@@ -103,8 +103,6 @@ Optional Variables:
 */
 {
   port: {{statsd_port}}
-, graphitePort: {{ statsd_graphitePort }}
-, graphiteHost: {{ statsd_graphiteHost|to_nice_json }}
 , backends: {{ statsd_backends|to_nice_json }}
 , debug: {{ statsd_debug|to_nice_json }}
 , address: {{ statsd_address|to_nice_json }}
@@ -117,11 +115,16 @@ Optional Variables:
 , percentThreshold: {{ statsd_percentThreshold|to_nice_json }}
 , flush_counts: {{ statsd_flush_counts|to_nice_json }}
 
+{% if statsd_graphitePort is defined and statsd_graphitePort is not none  %}
+, graphitePort: {{ statsd_graphitePort }}
+{% endif %}
+
+{% if statsd_graphiteHost is defined and statsd_graphiteHost is not none  %}
+, graphiteHost: {{ statsd_graphiteHost|to_nice_json }}
+{% endif %}
+
 {% if statsd_graphite_raw is defined and statsd_graphite_raw is not none  %}
 , graphite: {{ statsd_graphite_raw|length }}
-{% endif %}
-{% if statsd_graphite is defined and statsd_graphite is not none %}
-, graphite: {{ statsd_graphite|to_nice_json }}
 {% endif %}
 
 {% if statsd_influxdb_raw is defined and statsd_influxdb_raw is not none  %}

@@ -6,10 +6,7 @@ statsd_nodejs: /usr/bin/nodejs      # Path to nodejs
 statsd_user: _statsd                # User used to start statsd / nodejs
 
 statsd_port: 8125                   # StatsD listening port
-statsd_graphiteHost: 127.0.0.1      # Hostname or IP of Graphite server
-statsd_graphitePort: 2003           # Line Receiver port of Graphite (Carbon)
-statsd_backends:                    # Enabled backends
-- ./backends/graphite
+statsd_backends: []                 # Enabled backends
 statsd_debug: false
 statsd_address: 0.0.0.0             # address to listen on over UDP
 statsd_address_ipv6: false          # defines if the address is an IPv4 or IPv6 address [true or false]
@@ -20,8 +17,9 @@ statsd_healthStatus: up             # default health status to be returned and s
 statsd_flushInterval: 10000         # interval (in ms) to flush to Graphite
 statsd_percentThreshold: 90
 statsd_flush_counts: true           # send stats_counts metrics
+statsd_graphiteHost:                # Hostname or IP of Graphite server
+statsd_graphitePort:                # Line Receiver port of Graphite (Carbon)
 statsd_graphite:
- legacyNamespace: false
 
 # As an alternative for statsd_graphite variable, you can give "raw" value which get used as is.
 # Handy if you want to use eg. require('os') in the configuration.
