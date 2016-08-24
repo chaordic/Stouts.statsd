@@ -1,8 +1,5 @@
 ---
 
-- name: Ensure that NPM is installed
-  apt:  name=npm update_cache=yes
-  
 - name: Prepare Statsd directory
   file: state=directory path={{statsd_home}}
 
