@@ -8,7 +8,7 @@
 
 - name: Install extra NPM dependencies
   npm: name={{item}} path={{statsd_home}}
-  with_items: statsd_extra_dependencies
+  with_items: "{{statsd_extra_dependencies}}"
 
 - name: Create node user
   user: name={{statsd_user}} state=present shell=/bin/false system=yes

@@ -31,6 +31,9 @@ statsd_graphite:
 # Configure influxdb backen (only raw format)
 statsd_influxdb_raw:
 
+# Configure librato backend (only raw format)
+statsd_librato_raw:
+
 statsd_additional_options: {}       # Setup additional options
 statsd_additional_options_raw: {}   # Setup additional options without piping values trough 'to_nice_json' filter
 

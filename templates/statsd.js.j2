@@ -128,6 +128,10 @@ Optional Variables:
 , influxdb: {{ statsd_influxdb_raw }}
 {% endif %}
 
+{% if statsd_librato_raw is defined and statsd_librato_raw is not none %}
+, librato: {{ statsd_librato_raw }}
+{% endif %}
+
 {% for name, value in statsd_additional_options.items() %}
 , {{name}}: {{value|to_nice_json}}
 {% endfor %}
