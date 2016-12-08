@@ -124,7 +124,7 @@ Optional Variables:
 {% endif %}
 
 {% if statsd_graphite_raw is defined and statsd_graphite_raw is not none  %}
-, graphite: {{ statsd_graphite_raw|length }}
+, graphite: {{ statsd_graphite_raw }}
 {% endif %}
 
 {% if statsd_influxdb_raw is defined and statsd_influxdb_raw is not none  %}
