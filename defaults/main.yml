@@ -36,4 +36,6 @@ statsd_additional_options: {}       # Setup additional options
 statsd_additional_options_raw: {}   # Setup additional options without piping values trough 'to_nice_json' filter
 
 # Extra NPM dependencies. For example if your config.js depends on to something
+# if version package is omitted, assumes current version available at npm
+# { name: pkg, version: "1.2.3" }
 statsd_extra_dependencies: []
