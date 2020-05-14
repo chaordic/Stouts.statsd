@@ -33,6 +33,13 @@ statsd_graphite:
   legacyNamespace: false
 
 statsd_additional_options: {}       # Setup additional options
+
+# Extra NPM dependencies. For example if your config.js depends on to something
+statsd_extra_dependencies: []
+
+# Same then statsd_extra_dependencies with allow pin the version
+# { name: pkg, version: "1.2.3" }
+statsd_pined_extra_dependencies: []
 ```
 
 

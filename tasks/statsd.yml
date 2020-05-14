@@ -1,5 +1,4 @@
 ---
-
 - name: Prepare Statsd directory
   file: state=directory path={{statsd_home}}
 
@@ -7,8 +6,12 @@
   npm: name=statsd path={{statsd_home}}
 
 - name: Install extra NPM dependencies
-  npm: name={{item}} path={{statsd_home}}
-  with_items: "{{statsd_extra_dependencies}}"
+  npm: name={{item.name}} path={{statsd_home}}
+  with_items: "{{ statsd_extra_dependencies }}"
+
+- name: Install pined extra NPM dependencies
+  npm: name={{item.name}} version={{item.version | d(omit)}} path={{statsd_home}}
+  with_items: "{{ statsd_pined_extra_dependencies }}"
 
 - name: Create node user
   user: name={{statsd_user}} state=present shell=/bin/false system=yes
