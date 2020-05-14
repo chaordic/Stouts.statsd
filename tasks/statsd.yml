@@ -5,22 +5,13 @@
 - name: Install statsd
   npm: name=statsd path={{statsd_home}}
 
-- name: Support to deprecated NPM extra package variable
-  block:
-    - debug:
-        msg: "[WARNING]: Consider using statsd_extra_dependencies passing name and version instead only string package name, ex: statsd_extra_dependencies: [{ name: pkg, version: 1.2.3 }]"
-
-    - set_fact:
-        statsd_extra_dependencies: "{{ [{'name': item}] }}"
-      with_items: "{{ statsd_extra_dependencies }}"
-
-  when:
-    - statsd_extra_dependencies | length > 0
-    - statsd_extra_dependencies | first is string
-
 - name: Install extra NPM dependencies
-  npm: name={{item.name}} version={{item.version | d(omit)}} path={{statsd_home}}
+  npm: name={{item.name}} path={{statsd_home}}
   with_items: "{{ statsd_extra_dependencies }}"
+
+- name: Install pined extra NPM dependencies
+  npm: name={{item.name}} version={{item.version | d(omit)}} path={{statsd_home}}
+  with_items: "{{ statsd_pined_extra_dependencies }}"
 
 - name: Create node user
   user: name={{statsd_user}} state=present shell=/bin/false system=yes
